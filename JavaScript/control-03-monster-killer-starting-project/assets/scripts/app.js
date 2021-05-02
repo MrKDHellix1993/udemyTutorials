@@ -7,7 +7,6 @@ let hasBonusLife = true;
 let logEntries = [];
 
 function doAttack(attackMode) {
-    debugger;
     const attackValue = attackMode === NORML_ATTACK ? NORML_ATTACK_VALUE : SPECL_ATTACK_VALUE;
     const eventType = attackMode === NORML_ATTACK ? NORML_ATTACK_EVENT : SPECIAL_ATTACK_EVENT;
     const monsterDamage = dealMonsterDamage(attackValue);
@@ -87,7 +86,22 @@ function writeToLog(event, value, playerHealth, monsterHealth) {
 }
 
 function showMeLogsBoys() {
+    debugger;
     if(logEntries){
+        let index = 1;
+        for (const logObj of logEntries) {
+            console.log('\n');
+            console.log(`Log Entry #${index}`)
+            console.log(logObj);
+            console.log('And it\'s key value pair reperesntaition as below:');
+            for (const key in logObj) {
+                if (Object.hasOwnProperty.call(logObj, key)) {
+                    const element = logObj[key];
+                    console.log(`${key} ==> ${element}`);
+                }
+            }
+            ++index;
+        }
         console.log(logEntries)
     }
 }
